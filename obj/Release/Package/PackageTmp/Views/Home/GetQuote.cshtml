@@ -1,0 +1,129 @@
+﻿@section head {
+    <link rel="stylesheet" href="/css/forms.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            showRecaptcha("recaptcha");
+
+            $(".formGen").submit(function (event) {
+                $("#submit").val("Please wait...").attr("disabled", "disabled");
+                $(".loading").show();
+
+                var quote = {};
+                quote.Name = $("#name").val();
+                quote.Phone = $("#phone").val();
+                quote.Email = $("#email").val();
+                quote.Service = $("#service").val();
+                quote.TimeFrame = $("#timeframe").val();
+                quote.Description = $("#description").val();
+                quote.recaptcha_challenge_field = $("input#recaptcha_challenge_field").val();
+                quote.recaptcha_response_field = $("input#recaptcha_response_field").val();
+
+                //validate
+                if (quote.Name.length == 0 || quote.Phone.length == 0 || quote.Email.length == 0) {
+                    $(".alert-error").text("Required data is missing.").show();
+                    $(".loading").hide();
+                    $("#submit").val("Submit Request").removeAttr("disabled");
+                    return false;
+                }
+
+                //send email
+                $.post("SendEmail", quote)
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    var errorMessage = $.parseJSON(jqXHR.responseText).errorMessage;
+                    $(".alert-error").html(errorMessage).show();
+                    $(".loading").hide();
+                    Recaptcha.reload();
+                    $("#submit").val("Submit Request").removeAttr("disabled");
+                    return false;
+                })
+                .done(function (message) {
+                    $(".formGen").hide();
+                    $("#thankYou").html("<h3>" + message + "</h3>").show();
+                    $(".loading").hide();
+                    $("#submit").val("Submit Request").removeAttr("disabled");
+                });
+
+                return false;
+            });
+
+            $(".alert-error .close").on("click", function () {
+                $(".alert-error").hide();
+            });
+
+            $("body").on({
+                ajaxStart: function () {
+                    $(".loading").show();
+                },
+                ajaxStop: function () {
+                    $(".loading").hide();
+                }
+            });
+        });
+
+        function showRecaptcha(element) {
+            Recaptcha.create("6Ld1pt8SAAAAAM_7vG-NqiXl6ZYpFQ93ANvKQreN",
+                element,
+                {
+                    theme: "clean",
+                    callback: Recaptcha.focus_response_field
+                }
+            );
+        }
+    </script>
+}
+<div id="formContainer">
+    <h4>Request a Quote</h4><div class="loading"></div>
+    <form method="post" action="" class="formGen">
+        <div class="alert alert-error">  
+          <a class="close" data-dismiss="alert">×</a>  
+        </div>  
+    	<div class="formRow">
+            <label for="field0">Your name<span class="star">*</span>:</label>
+            <input type="text" name="field0" id="name" class="textField required" />                            
+        </div>
+        <div class="formRow">
+            <label for="field8">Phone<span class="star">*</span>:</label>
+            <input type="text" name="field8" id="phone" class="textField required" />
+        </div>
+        <div class="formRow">
+            <label for="field1">Email<span class="star">*</span>:</label>
+            <input type="text" name="field1" id="email" class="textField required" />
+        </div>
+        <div class="formRow">        
+            <label for="field2">Service:</label>
+            <select name="field2" id="service" class="select required">            
+                <option  selected="selected" value="">Please Select</option>
+                <option  value="Residential">Residential Carpet</option>
+                <option  value="Office">Office Carpet</option>
+                <option  value="Area Rug">Area Rug Cleaning</option>
+                <option  value="Upholstery">Upholstery Cleaning</option>
+                <option  value="Pet Stain">Pet Stain Cleaning</option>                                    
+            </select>
+        </div>
+        <div class="formRow">        
+            <label for="field3">Time Frame:</label>
+            <select name="field3" id="timeframe" class="select">                        
+                <option  value="">Choose a time frame</option>
+                <option  value="A Month">A Month</option>
+                <option  value="Two to three weeks">Two to three weeks</option>
+                <option  value="A day">A day</option>
+                <option  value="RIGHT NOW!">RIGHT NOW!</option>                                    
+            </select>
+        </div>
+        <div class="formRow">
+            <label for="field4">Description:</label>
+            <textarea name="field4" id="description" rows="5" cols="40" class="textArea required"></textarea>
+        </div>        
+        <div class="formRow">
+            <span>Just to make sure you're not a robot...</span>
+            <div id="recaptcha"></div>
+        </div>
+        <div class="formRow">
+           <input type="submit" value="Submit Request" id="submit" />
+        </div>
+	</form>  
+</div>
+<div id="thankYou"></div>
+

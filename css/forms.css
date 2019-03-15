@@ -1,0 +1,325 @@
+#thankYou{
+	display: none;
+	margin: -30px auto 0 auto;
+	width: 400px;
+	z-index: 10000;
+}
+
+#thankYou h1{
+	margin-bottom:20px;
+}
+
+#formContainer{
+	width: 425px;
+	margin:60px auto;
+}
+
+html.embed{
+	background:none;
+}
+
+.embed #formContainer{
+	margin-top:20px;
+	margin-bottom:0;
+}
+
+.formRow{
+	padding: 7px 0;
+}
+
+.formRow label{
+	display: inline-block;
+	margin-left: -105px;
+	padding-right: 8px;
+	text-align: right;
+	width: 180px;
+}
+
+.formRow label.radioLabel{
+	width:auto;
+	margin:0 5px 0 0;
+}
+
+.formRow input,
+.formRow textarea{
+	padding: 5px 8px;
+	background-color:#fff;
+	border:none;
+	color:#777;
+	outline:none;
+	resize:none;
+	font:14px/1.2 Calibri,Arial,sans-serif;
+	width: 200px;
+	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	
+	-moz-box-shadow: 1px 1px 1px #bbb inset, 0 0 1px #ccc inset;
+	-webkit-box-shadow: 1px 1px 1px #bbb inset, 0 0 1px #ccc inset;
+	box-shadow: 1px 1px 1px #bbb inset, 0 0 1px #ccc inset;
+}
+
+.formRow input:focus,
+.formRow textarea:focus{
+	-moz-box-shadow: 1px 1px 1px #aecae9 inset, 0 0 1px #aecae9 inset;
+	-webkit-box-shadow: 1px 1px 1px #aecae9 inset, 0 0 1px #aecae9 inset;
+	box-shadow: 1px 1px 1px #aecae9 inset, 0 0 1px #aecae9 inset;
+}
+
+.formRow textarea{
+	vertical-align: top;
+	width: 200px;
+	overflow:auto;
+}
+
+.formRow input[type=submit],
+.formRow input[type=button]{
+	width:120px;
+	cursor:pointer;
+}
+
+.star{
+	color:#e20000;
+}
+
+.staticError{
+	color: #E20000;
+	font-size: 11px;
+	padding: 4px 0 0 120px;
+}
+
+.errorIcon{
+	background:url('/img/sprite.png') -100px -150px no-repeat;
+	width:18px;
+	height:19px;
+	display:inline-block;
+	position:relative;
+	margin-left: 6px;
+	vertical-align: middle;
+	cursor:pointer;
+}
+
+.errorIcon .errorTip{
+	background:url('/img/tooltip_bg.png') #c82f32 repeat-x;
+	border:1px solid #a00c0d;
+	border-top-color:#d01113;
+	color:#fff;
+	text-shadow:1px 1px 0 #9a1b1d;
+	
+	padding:10px;
+	position:absolute;
+	z-index:1000;
+	font-size:11px;
+	width:160px;
+	text-align:center;
+	top:-10px;
+	line-height:1.2;
+	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	
+	-moz-box-shadow:0 1px 0 #aaa;
+	-webkit-box-shadow:0 1px 0 #aaa;
+	box-shadow:0 1px 0 #aaa;
+}
+
+#overlay{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background-color:#000;
+	opacity:0.4;
+	filter:alpha(opacity=0.4);
+	z-index:100000;
+}
+
+#preloader{
+	background: url("/img/preloader.gif") no-repeat 12px 10px #000000;
+	font-size: 11px;
+	height: 20px;
+	left: 50%;
+	line-height: 20px;
+	margin: -20px 0 0 -45px;
+	padding: 10px;
+	position: fixed;
+	text-align: left;
+	text-indent: 36px;
+	top: 50%;
+	width: 90px;
+	z-index: 100001;
+	color:#eee;
+	
+	opacity:0.8;
+	filter:alpha(opacity=0.8);
+	
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+
+/***************************
+*		Select Boxes
+***************************/
+
+.selectContainer{
+	background:url('/img/sprite.png') no-repeat;
+	padding: 0 15px 0 10px;
+	min-width: 186px;
+	display: inline-block;
+	position: relative;
+	cursor:pointer;
+	margin-right: 5px;
+}
+
+.selectBox{
+	height: 30px;
+	line-height: 30px;
+	text-shadow: 1px 1px 0 #fff;
+}
+
+.selectContainer:hover{
+	background-position:0 -30px;
+}
+
+.selectContainer:hover span{
+	background-position:100% -30px;
+}
+
+.selectContainer span{
+	background:url('/img/sprite.png') no-repeat top right;
+	height:30px;
+	right: -5px;
+	top:0;
+	position:absolute;
+	width:25px;
+}
+
+.selectContainer ul{
+	left: 1px;
+	list-style: none outside none;
+	position: absolute;
+	right: -5px;
+	top: 32px;
+	z-index:10000;
+	border:1px solid #ccc;
+	border-width:0 1px 1px;
+}
+
+.selectContainer li{
+		
+    background: url("/img/sprite.png") repeat -4px 0;
+	height: 28px;
+	line-height: 28px;
+    overflow: hidden;
+    padding: 0 10px;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.selectContainer li:hover{
+	background: url("/img/sprite.png") repeat -4px -30px;
+}
+
+
+/***************************
+*		Checkboxes
+***************************/
+
+
+.formRow .checkBox{
+	background: url("/img/sprite.png") repeat 0 -150px;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	line-height: 16px;
+	vertical-align: middle;
+	cursor:pointer;
+}
+
+.formRow .checkBox:hover{
+	background-position:0 -170px;
+}
+
+.formRow .checkBox.checked{
+	background-position:-20px -150px;
+}
+
+.formRow .checkBox.checked:hover{
+	background-position:-20px -170px;
+}
+
+/***************************
+*		Radios
+***************************/
+
+.formRow .radio{
+	background: url("/img/sprite.png") repeat -40px -150px;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	line-height: 16px;
+	vertical-align: middle;
+	cursor:pointer;
+}
+
+.formRow .radio:hover{
+	background-position:-40px -170px;
+}
+
+.formRow .radio.checked{
+	background-position:-60px -150px;
+}
+
+.formRow .radio.checked:hover{
+	background-position:-60px -170px;
+}
+
+
+/***************************
+*		Submit button
+***************************/
+
+
+.formRow .button{
+	background: url("/img/sprite.png") no-repeat 0 -70px;
+	border: none;
+	position:relative;
+	cursor: pointer;
+	display: inline-block;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px 0 15px;
+	margin: 10px 0 0 120px;
+	position: relative;
+	color:#65717d;
+	text-shadow: 1px 1px 0 #fff;
+}
+
+.formRow .button span{
+	background:url('/img/sprite.png') no-repeat 100% -70px;
+	height:34px;
+	right: -5px;
+	top:0;
+	position:absolute;
+	width:10px;
+}
+
+.formRow .button:hover{
+	background-position:0 -104px;
+}
+
+.formRow .button:hover span{
+	background-position:100% -104px;
+}
+
+.formRow .button:active{
+	bottom:-1px;
+}
+
+.formRow input[type=submit] { color: #fff; opacity: .75; filter: alpha(opacity = 75); box-shadow: 1px 1px 1px #bbb, 0 0 1px #ccc; background: -webkit-gradient(linear, left top, left bottom, from(#D2E4D4), to(#515952));background: -moz-linear-gradient(top, #D2E4D4, #515952);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D2E4D4', endColorstr='#515952'); }
+.formRow input[type=submit]:hover { opacity: 1; filter: alpha(opacity = 100); }
+.alert-error { display: none; }
+.loading { display: none; background: url("/img/ajax-loader2.gif") no-repeat; width: 31px; height: 31px; float: right; position: relative; top: -35px; left: -240px; }

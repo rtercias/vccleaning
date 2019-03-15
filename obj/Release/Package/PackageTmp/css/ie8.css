@@ -1,0 +1,16 @@
+﻿.navbar .nav { width: 164%; }
+.navbar .nav li { display: inline-block; *display: inline; zoom: 1; }
+.navbar .nav .home { width: 60px; }
+.navbar .nav .residential { width: 100px; }
+.navbar .nav .office { width: 60px; }
+.navbar .nav .area-rugs { width: 90px; }
+.navbar .nav .upholstery { width: 90px; }
+.navbar .nav .pet-problems { width: 120px; }
+.navbar .nav .green-cleaning { width: 120px; }
+.navbar .nav .get-quote { width: 90px; }
+.navbar .nav .about-us { width: 90px; }
+.carousel-container { /*width: 703px;*/ }
+.carousel-inner { width: auto; }
+.carousel { float: none; margin: 20px auto 20px auto; }
+.bottom-menu div { padding: 5px 0 5px 0; }
+
